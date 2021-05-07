@@ -17,10 +17,11 @@ void printSubsetsRec(int arr[], int i, int sum, vector<int> p, int dp[][11])
     }
     if(dp[i-1][sum])
     {
+        cout << "Considering" << arr[i-1] << endl;
         vector<int> b = p;
         printSubsetsRec(arr, i-1, sum, b, dp);
     }
-    if(sum >= arr[i-1] && dp[i-1][sum-arr[i]])
+    if(dp[i-1][sum-arr[i]])
     {
         p.push_back(arr[i-1]);
         printSubsetsRec(arr, i-1, sum-arr[i-1], p, dp);
