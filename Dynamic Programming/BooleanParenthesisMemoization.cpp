@@ -50,7 +50,7 @@ int solve(string s, int i, int j, bool isTrue)
 
 int main()
 {
-    string  s = "T|F^T|T&F&T|F^F";
+    string  s = "T&F|T^F";
     memset(dp, -1, sizeof(dp));
     int len = s.size();
     cout << "No of possible combinations to get true : " << solve(s, 0, len-1, true);
