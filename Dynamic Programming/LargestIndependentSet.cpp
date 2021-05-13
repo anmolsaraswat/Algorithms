@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct Node{
+    int data;
+    int liss;
+    Node *left, *right;
+    Node(int x)
+    {
+        this->data = x;
+        this->liss = 0;
+        left = right = NULL;
+    }
+};
+
+int LISS(Node *root)
+{
+    if(root == NULL)
+        return 0;
+    if(root->liss)
+        return root->liss;
+    if(root->left == NULL && root->right == NULL)
+        return root->liss = 1;
+    int size_excl = LISS(root->left) + LISS(root->right);
+    int size_incl = 1;
+    if(root->left)
+        size_incl += LISS(root->left->left) + LISS(root->left->right);
+    if(root->right)
+        size_incl += LISS(root->right->left) + LISS(root->right->right);
+
+    return root->liss = max(size_incl, size_excl);
+}
+
+int main()
+{
+    struct Node *root = new Node(20);
+    root->left = new Node(8);
+    root->left->left = new Node(4);
+    root->left->right = new Node(12);
+    root->left->right->left = new Node(10);
+    root->left->right->right = new Node(14);
+    root->right = new Node(22);
+    root->right->right = new Node(25);
+
+    cout << "Size of the Largest Independent Set : " << LISS(root);
+
+    return 0;
+}
