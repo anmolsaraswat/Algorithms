@@ -18,6 +18,7 @@ void patSearch(char text[], char pattern[])
         }
         else
         {
+            i = i-j+1;
             j=0;
         }
     }
@@ -25,7 +26,7 @@ void patSearch(char text[], char pattern[])
 
 int main()
 {
-    char text[] = "AABAACAADAABAAABAA";
+    char text[] = "AAABADACAADAABAAABAA";
     char pattern[] = "AABA";
     patSearch(text, pattern);
 
